@@ -1,0 +1,44 @@
+<h2>Tâches</h2>
+<p class="count">{{ count() }} tâche(s)</p>
+<div class="actions">
+  <button (click)="addOnClick()">Ajouter une tâche</button>
+  <button (click)="clear()">Vider les tâches</button>
+  <button (click)="addWithPush()">Ajouter avec push</button>
+</div>
+
+<ul>
+  @for (task of tasks(); track task.id) {
+    <li>{{ task.title }}</li>
+  }
+</ul>
+
+<hr />
+
+<h2>Liste :</h2>
+<div class="form">
+  <h3>Ajout :</h3>
+  <input
+    [value]="newItem()"
+    (input)="newItem.set($any($event.target).value)"
+    (keyup.enter)="addTache()"
+    placeholder="Nom de la tâche"
+  />
+  <button (click)="emptyTachesList()">Vider</button>
+</div>
+
+<p>Tâches restantes : {{ availableTaches().length }}</p>
+
+@if (emptyTaches()) {
+  <p class="empty">Plus de tâches disponibles</p>
+}
+
+<p>{{ taches().length }} tâches au total</p>
+
+<ul>
+  @for (tache of taches(); track tache.id) {
+    <li>
+      <span>{{ tache.title }}</span>
+      <button (click)="deleteTache(tache.id)">Supprimer</button>
+    </li>
+  }
+</ul>
