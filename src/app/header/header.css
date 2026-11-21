@@ -1,1 +1,9 @@
+/* Style minimal du header */
+h1 {
+  margin-bottom: 8px;
+}
 
+button {
+  margin-bottom: 12px;
+  cursor: pointer;
+}
